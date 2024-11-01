@@ -4,6 +4,8 @@
  * @returns {number} sum of all percentages of total affected trips
  */
 
+//for now, pass arg to node a single string containing the data in json format. example:
+// "{"NTstops":"[1,2,3]","SLCstops":"[1,2,3]","normalStops":"[1,2,3]"}"
 const headwayCalc = async (trips) => {
   const json = await new Function("return " + trips)();
   const SLCstops = 8;
