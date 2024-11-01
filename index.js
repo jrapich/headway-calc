@@ -1,6 +1,6 @@
 /**
  * Calculate the percentage of missed headways as a portion of all affected trips
- * @param {object} trips contains 3 arrays, 1 each for NTstops, SLCstops, normalstops
+ * @param {object} trips contains 3 arrays, 1 each for NTstops, SLCstops, normalStops
  * @returns {number} sum of all percentages of total affected trips
  */
 
@@ -9,7 +9,7 @@ const headwayCalc = (trips) => {
   const NTstops = 10;
   const stops = 16;
   const percentages = [];
-  let total;
+  let total = 0;
 
   /**
    * for loop function to iterate over trips arrays. array length of 0 means no trips for that type.
@@ -38,6 +38,15 @@ const headwayCalc = (trips) => {
     }
     return;
   };
+
+  trips.NTstops.length > 0 ? tripLoop(trips.NTstops, "nt") : null;
+  trips.SLCstops.length > 0 ? tripLoop(trips.SLCstops, "slc") : null;
+  trips.normalStops.length > 0 ? tripLoop(normalStops) : null;
+
+  for (let i = 0; i < percentages.length; i++) {
+    total += percentages[i];
+  }
+  return total;
 };
 
 headwayCalc();
