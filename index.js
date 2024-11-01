@@ -4,7 +4,8 @@
  * @returns {number} sum of all percentages of total affected trips
  */
 
-const headwayCalc = (trips) => {
+const headwayCalc = async (trips) => {
+  const json = await new Function("return " + trips)();
   const SLCstops = 8;
   const NTstops = 10;
   const stops = 16;
@@ -20,28 +21,28 @@ const headwayCalc = (trips) => {
    */
   const tripLoop = (trips, type) => {
     switch (type) {
-        case "slc":
-            for (let i = 0; i < trips.length; i++) {
-                percentages.push(trips[i] / SLCstops);
-            }
-            break;
-        case "nt":
-            for (let i = 0; i < trips.length; i++) {
-                percentages.push(trips[i] / NTstops);
-            }
-            break;
-        default:
-            for (let i = 0; i < trips.length; i++) {
-                percentages.push(trips[i] / stops);
-            }
-            break;
+      case "slc":
+        for (let i = 0; i < trips.length; i++) {
+          percentages.push(trips[i] / SLCstops);
+        }
+        break;
+      case "nt":
+        for (let i = 0; i < trips.length; i++) {
+          percentages.push(trips[i] / NTstops);
+        }
+        break;
+      default:
+        for (let i = 0; i < trips.length; i++) {
+          percentages.push(trips[i] / stops);
+        }
+        break;
     }
     return;
   };
 
-  trips.NTstops.length > 0 ? tripLoop(trips.NTstops, "nt") : null;
-  trips.SLCstops.length > 0 ? tripLoop(trips.SLCstops, "slc") : null;
-  trips.normalStops.length > 0 ? tripLoop(normalStops) : null;
+  json.NTstops.length > 0 ? tripLoop(json.NTstops, "nt") : null;
+  json.SLCstops.length > 0 ? tripLoop(json.SLCstops, "slc") : null;
+  json.normalStops.length > 0 ? tripLoop(json.normalStops) : null;
 
   for (let i = 0; i < percentages.length; i++) {
     total += percentages[i];
