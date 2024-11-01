@@ -46,6 +46,7 @@ const headwayCalc = (trips) => {
   for (let i = 0; i < percentages.length; i++) {
     total += percentages[i];
   }
+  console.log("sum of missed headways:", total);
   return total;
 };
 
