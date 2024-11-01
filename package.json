@@ -1,0 +1,19 @@
+{
+  "name": "headway-calc",
+  "version": "0.1.0",
+  "description": "simple headway percentage calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrapich/headway-calc.git"
+  },
+  "author": "https://github.com/jrapich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrapich/headway-calc/issues"
+  },
+  "homepage": "https://github.com/jrapich/headway-calc#readme"
+}
