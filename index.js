@@ -49,4 +49,4 @@ const headwayCalc = (trips) => {
   return total;
 };
 
-headwayCalc();
+headwayCalc(process.argv[2]);
